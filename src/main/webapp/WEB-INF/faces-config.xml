@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <application>
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+        
+        <locale-config>
+            <default-locale>pl</default-locale>
+            <supported-locale>en</supported-locale>
+            <supported-locale>pl</supported-locale>
+        </locale-config>
+    </application>
+    
+     <managed-bean>
+        
+        <managed-bean-name>viewBean</managed-bean-name>
+        
+        <managed-bean-class>pl.baranski.controllers.ViewBean</managed-bean-class>
+        
+        <managed-bean-scope>view</managed-bean-scope>
+
+        
+        <managed-property>
+            <property-name>pageTitle</property-name>
+            <value>Panel Zarządzania Kotami (View Scope - z faces-config.xml)</value>
+        </managed-property>
+    </managed-bean>
+    
+    <navigation-rule>
+        <from-view-id>/views/mainWindow.xhtml</from-view-id>
+        
+        <navigation-case>
+            <from-outcome>tabela</from-outcome> 
+            <to-view-id>/views/tableView.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>uzytkownicyAjax</from-outcome>
+            <to-view-id>/views/tableAJAXView.xhtml</to-view-id>
+        </navigation-case>
+    
+    
+    
+        <navigation-case>
+            <from-outcome>logoutWindow</from-outcome>
+            <to-view-id>views/mainWindow.xhtml</to-view-id> 
+         </navigation-case>
+    </navigation-rule>
+</faces-config>
