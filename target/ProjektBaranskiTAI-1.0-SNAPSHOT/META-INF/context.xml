@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/ProjektBaranskiTAI">
+  
+  <Realm className="org.apache.catalina.realm.DataSourceRealm" 
+         dataSourceName="jdbc/authority" localDataSource="false" roleNameCol="role_name" 
+         userCredCol="user_pass" 
+         userNameCol="user_name" 
+         userRoleTable="user_roles" 
+         userTable="users"/>
+  
+  
+  
+    <Resource
+    auth="Container"
+    driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    maxActive="100"
+    maxIdle="30"
+    maxWait="10000"
+    name="jdbc/bazaTestowaMSSQLLocal"
+    type="javax.sql.DataSource"
+    url="jdbc:sqlserver://155.158.112.12:1433;databaseName=tomcat"
+    username="tomcatuser"
+    password="tomcat" />
+
+
+</Context>
+

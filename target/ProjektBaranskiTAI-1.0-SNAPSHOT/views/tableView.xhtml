@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../template/masterTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div>
+           <h:form>
+               <h:dataTable value="#{sessionController.catsList}" var="cat" bgcolor="LightGray" border="3" cellspacing="2">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{cat.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Imię</f:facet>
+                    <h:inputText value="#{cat.name}" rendered="#{cat.edited}"/>
+                    <h:outputText value="#{cat.name}" rendered="#{not cat.edited}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Rasa</f:facet>
+                    <h:inputText value="#{cat.breed}" rendered="#{cat.edited}"/>
+                    <h:outputText value="#{cat.breed}" rendered="#{not cat.edited}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Wiek</f:facet>
+                    <h:inputText value="#{cat.age}" rendered="#{cat.edited}"/>
+                    <h:outputText value="#{cat.age}" rendered="#{not cat.edited}"/>
+                </h:column>
+                <h:column id="kolOperacja">
+                    <f:facet name="header">Operacja</f:facet>
+                    <h:selectBooleanCheckbox id="editCheckBox" value="#{cat.edited}" rendered="true" onclick="submit()"/>
+                    <h:commandButton id="addRow" value="Wstaw" action="#{sessionController.addRow(cat)}"/>
+                    <h:commandButton id="delRow" value="Usuń" action="#{sessionController.delRow(cat)}"/>
+                    <h:commandButton id="modRow" value="Modyfikuj" action="#{sessionController.modifyRow(cat)}"/>
+                </h:column>
+            </h:dataTable>
+            
+            <h:commandButton value="Odczyt danych" action="#{sessionController.refreshData()}"/>
+            <h:commandButton value="Zapisz dane" action="#{sessionController.saveData()}"/>
+        </h:form>
+            </div>
+    </ui:define>
+
+</ui:composition>

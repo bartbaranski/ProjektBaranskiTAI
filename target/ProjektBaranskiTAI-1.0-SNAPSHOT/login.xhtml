@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="template/masterTemplate.xhtml"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:define name="content">
+        <center>
+            <h2>#{msgs.welcome_msg}</h2>
+            <h:form p:method="post" p:action="j_security_check">
+                 <table align="center">
+                    <tr>
+                        <td>#{msgs.username}:</td>
+                        <td><h:inputText p:name="j_username" id="j_username" size="20" /></td>
+                    </tr>
+                    <tr>
+                        <td>#{msgs.password}:</td>
+                        <td><h:inputSecret p:name="j_password" id="j_password" size="20" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <input type="submit" value="#{msgs.logon}" class="btn btn-primary" />
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </center>
+    </ui:define>
+</ui:composition>

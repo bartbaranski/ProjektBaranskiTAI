@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./../template/masterTemplate.xhtml">
+
+    <ui:define name="content">
+        <h1><h:outputText value="#{msgs.welcome_msg}"/></h1> <h3>Dane z różnych komponentów zarządzanych:</h3>
+        <ul>
+            <li>Wersja aplikacji (Zasięg Aplikacji): **<h:outputText value="#{applicationController.version}"/>**</li>
+            <li>Wersja sesji: **<h:outputText value="#{sessionController.sessionVersion}"/>**</li>
+            <li>Wstrzyknięte dane (DI - App do Session): **<h:outputText value="#{sessionController.appVersionInfo}"/>**</li>
+            <li>Aktualnie zalogowany: **<h:outputText value="#{request.remoteUser}"/>**</li>
+            
+            <li>Tytuł strony (Zasięg Widoku): **<h:outputText value="#{viewBean.pageTitle}"/>**</li>
+        </ul>
+        
+        <h:form>
+            <h3>Nawigacja / Przykłady reguł (Używane przez faces-config):</h3>
+            <h:commandButton value="Lista Kotów (Standard)" action="tabela" styleClass="btn btn-primary"/>
+            <br/><br/>
+            <h:commandButton value="Lista Użytkowników (AJAX - Baza Danych)" action="uzytkownicyAjax" styleClass="btn btn-success"/>
+            <br/><br/>
+            <h:commandButton value="Wyloguj" action="/logoutWindow" styleClass="btn" />
+        </h:form>
+    </ui:define>
+</ui:composition>
